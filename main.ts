@@ -20,10 +20,11 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     Eshoot.startEffect(effects.fire)
     music.play(music.createSoundEffect(WaveShape.Square, 2428, 1, 255, 0, 100, SoundExpressionEffect.None, InterpolationCurve.Linear), music.PlaybackMode.UntilDone)
 })
-mp.onScore(50, function (player2) {
-    game.gameOver(true)
-})
 sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSprite) {
+    info.changeLifeBy(-1)
+    pause(5000)
+})
+info.onLifeZero(function () {
     sprites.destroy(P1, effects.fire, 100)
     game.gameOver(false)
 })
@@ -60,6 +61,7 @@ P1.setStayInScreen(true)
 P1.setPosition(25, 60)
 music.play(music.melodyPlayable(music.beamUp), music.PlaybackMode.UntilDone)
 P1.sayText("Start!", 1500, false)
+info.setLife(5)
 forever(function () {
     SEnemy = sprites.create(img`
         . . . . . . . . . . . . . . . . 
@@ -80,8 +82,9 @@ forever(function () {
         . . . . . . . . . . . . . . . . 
         `, SpriteKind.Enemy)
     SEnemy.setPosition(randint(5, 155), 130)
-    SEnemy.setVelocity(0, -200)
-    pause(1000)
+    SEnemy.setVelocity(0, -100)
+    SEnemy.startEffect(effects.fire)
+    pause(1500)
 })
 forever(function () {
     pause(5000)
@@ -104,8 +107,8 @@ forever(function () {
         . . . . . 1 5 4 4 5 1 . . . . . 
         . . . . . 1 5 4 4 5 1 . . . . . 
         `, SpriteKind.Enemy)
-    mySprite.setPosition(randint(10, 80), -100)
-    mySprite.setVelocity(0, 250)
+    mySprite.setPosition(randint(10, 150), 220)
+    mySprite.setVelocity(0, -200)
     mySprite.setScale(4, ScaleAnchor.Middle)
 })
 forever(function () {
@@ -128,8 +131,9 @@ forever(function () {
         . . . . . . . . . . . . . . . . 
         `, SpriteKind.Enemy)
     SEnemy.setPosition(randint(5, 155), -10)
-    SEnemy.setVelocity(0, 200)
-    pause(1000)
+    SEnemy.setVelocity(0, 100)
+    SEnemy.startEffect(effects.fire)
+    pause(1500)
 })
 forever(function () {
     Comon_enemy = sprites.create(img`
@@ -150,4 +154,29 @@ forever(function () {
     Comon_enemy.setPosition(165, randint(15, 115))
     Comon_enemy.setVelocity(-100, 0)
     pause(1500)
+})
+forever(function () {
+    pause(5000)
+    P1.sayText("Watch out!", 1000, false)
+    mySprite = sprites.create(img`
+        . . . . . 1 5 4 4 5 1 . . . . . 
+        . . . . . 1 5 4 4 5 1 . . . . . 
+        . . . . . 1 5 4 4 5 1 . . . . . 
+        . . . . . 1 5 4 4 5 1 . . . . . 
+        . . . . . 1 5 4 4 5 1 . . . . . 
+        . . . . . 1 5 4 4 5 1 . . . . . 
+        . . . . . 1 5 4 4 5 1 . . . . . 
+        . . . . . 1 5 4 4 5 1 . . . . . 
+        . . . . . 1 5 4 4 5 1 . . . . . 
+        . . . . . 1 5 4 4 5 1 . . . . . 
+        . . . . . 1 5 4 4 5 1 . . . . . 
+        . . . . . 1 5 4 4 5 1 . . . . . 
+        . . . . . 1 5 4 4 5 1 . . . . . 
+        . . . . . 1 5 4 4 5 1 . . . . . 
+        . . . . . 1 5 4 4 5 1 . . . . . 
+        . . . . . 1 5 4 4 5 1 . . . . . 
+        `, SpriteKind.Enemy)
+    mySprite.setPosition(randint(10, 150), -100)
+    mySprite.setVelocity(0, 200)
+    mySprite.setScale(4, ScaleAnchor.Middle)
 })
