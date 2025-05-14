@@ -87,7 +87,7 @@ forever(function () {
         . . . . . . . . . . . . . . . . 
         `, SpriteKind.Enemy)
     SEnemy.setPosition(randint(5, 155), 130)
-    SEnemy.setVelocity(0, -200)
+    SEnemy.setVelocity(0, -100)
     SEnemy.startEffect(effects.fire)
     pause(1000)
 })
@@ -111,7 +111,7 @@ forever(function () {
         . . . . . . . . . . . . . . . . 
         `, SpriteKind.Enemy)
     SEnemy.setPosition(randint(5, 155), -10)
-    SEnemy.setVelocity(0, 200)
+    SEnemy.setVelocity(0, 100)
     SEnemy.startEffect(effects.fire)
     pause(1000)
 })
@@ -142,19 +142,15 @@ forever(function () {
 })
 forever(function () {
     Comon_enemy = sprites.create(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . 1 1 1 1 1 1 1 1 1 1 . . . 
-        . . 1 5 5 5 5 5 5 4 4 4 4 1 . . 
-        . . 1 5 5 5 5 5 5 5 4 4 4 1 . . 
-        . . 1 5 5 5 5 5 5 5 4 4 4 1 . . 
-        . . 1 5 5 5 5 5 5 5 4 4 4 1 . . 
-        . . 1 5 5 5 5 5 5 4 4 4 4 1 . . 
-        . . . 1 1 1 1 1 1 1 1 1 1 . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . 
+        . . 1 1 1 1 1 1 1 1 1 1 . . 
+        . 1 5 5 5 5 5 5 4 4 4 4 1 . 
+        . 1 5 5 5 5 5 5 5 4 4 4 1 . 
+        . 1 5 5 5 5 5 5 5 4 4 4 1 . 
+        . 1 5 5 5 5 5 5 5 4 4 4 1 . 
+        . 1 5 5 5 5 5 5 4 4 4 4 1 . 
+        . . 1 1 1 1 1 1 1 1 1 1 . . 
+        . . . . . . . . . . . . . . 
         `, SpriteKind.Enemy)
     Comon_enemy.setPosition(165, randint(15, 115))
     Comon_enemy.setVelocity(-100, 0)
