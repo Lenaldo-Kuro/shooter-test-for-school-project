@@ -20,6 +20,10 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     Eshoot.startEffect(effects.fire)
     music.play(music.createSoundEffect(WaveShape.Square, 2428, 1, 255, 0, 100, SoundExpressionEffect.None, InterpolationCurve.Linear), music.PlaybackMode.UntilDone)
 })
+sprites.onOverlap(SpriteKind.Food, SpriteKind.Player, function (sprite, otherSprite) {
+    info.changeLifeBy(1)
+    sprites.destroy(mySprite2)
+})
 sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSprite) {
     info.changeLifeBy(-1)
     pause(5000)
@@ -36,6 +40,7 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, oth
 let mySprite: Sprite = null
 let SEnemy: Sprite = null
 let Comon_enemy: Sprite = null
+let mySprite2: Sprite = null
 let Eshoot: Sprite = null
 let P1: Sprite = null
 P1 = sprites.create(img`
@@ -82,9 +87,33 @@ forever(function () {
         . . . . . . . . . . . . . . . . 
         `, SpriteKind.Enemy)
     SEnemy.setPosition(randint(5, 155), 130)
-    SEnemy.setVelocity(0, -100)
+    SEnemy.setVelocity(0, -200)
     SEnemy.startEffect(effects.fire)
-    pause(1500)
+    pause(1000)
+})
+forever(function () {
+    SEnemy = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . 1 . . . . 1 . . . . . 
+        . . . . . 1 1 . . 1 1 . . . . . 
+        . . . . . 1 1 1 1 1 1 . . . . . 
+        . . . . . 1 1 1 1 1 1 . . . . . 
+        . . . . . 1 1 1 1 1 1 . . . . . 
+        . . . . . . 1 1 1 1 . . . . . . 
+        . . . . . . . 1 1 . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, SpriteKind.Enemy)
+    SEnemy.setPosition(randint(5, 155), -10)
+    SEnemy.setVelocity(0, 200)
+    SEnemy.startEffect(effects.fire)
+    pause(1000)
 })
 forever(function () {
     pause(5000)
@@ -108,32 +137,8 @@ forever(function () {
         . . . . . 1 5 4 4 5 1 . . . . . 
         `, SpriteKind.Enemy)
     mySprite.setPosition(randint(10, 150), 220)
-    mySprite.setVelocity(0, -200)
+    mySprite.setVelocity(0, -250)
     mySprite.setScale(4, ScaleAnchor.Middle)
-})
-forever(function () {
-    SEnemy = sprites.create(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . 1 . . . . 1 . . . . . 
-        . . . . . 1 1 . . 1 1 . . . . . 
-        . . . . . 1 1 1 1 1 1 . . . . . 
-        . . . . . 1 1 1 1 1 1 . . . . . 
-        . . . . . 1 1 1 1 1 1 . . . . . 
-        . . . . . . 1 1 1 1 . . . . . . 
-        . . . . . . . 1 1 . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `, SpriteKind.Enemy)
-    SEnemy.setPosition(randint(5, 155), -10)
-    SEnemy.setVelocity(0, 100)
-    SEnemy.startEffect(effects.fire)
-    pause(1500)
 })
 forever(function () {
     Comon_enemy = sprites.create(img`
@@ -177,6 +182,21 @@ forever(function () {
         . . . . . 1 5 4 4 5 1 . . . . . 
         `, SpriteKind.Enemy)
     mySprite.setPosition(randint(10, 150), -100)
-    mySprite.setVelocity(0, 200)
+    mySprite.setVelocity(0, 250)
     mySprite.setScale(4, ScaleAnchor.Middle)
+})
+forever(function () {
+    mySprite2 = sprites.create(img`
+        . . . 7 7 . . . 
+        . . . 7 7 . . . 
+        . . . 7 7 . . . 
+        7 7 7 7 7 7 7 7 
+        7 7 7 7 7 7 7 7 
+        . . . 7 7 . . . 
+        . . . 7 7 . . . 
+        . . . 7 7 . . . 
+        `, SpriteKind.Food)
+    mySprite2.setPosition(randint(5, 155), randint(5, 115))
+    pause(5000)
+    sprites.destroy(mySprite2)
 })
