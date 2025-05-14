@@ -32,6 +32,8 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, oth
     sprites.destroy(Eshoot, effects.disintegrate, 100)
     sprites.destroy(Comon_enemy, effects.fire, 200)
 })
+let mySprite: Sprite = null
+let SEnemy: Sprite = null
 let Comon_enemy: Sprite = null
 let Eshoot: Sprite = null
 let P1: Sprite = null
@@ -58,6 +60,77 @@ P1.setStayInScreen(true)
 P1.setPosition(25, 60)
 music.play(music.melodyPlayable(music.beamUp), music.PlaybackMode.UntilDone)
 P1.sayText("Start!", 1500, false)
+forever(function () {
+    SEnemy = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . 1 1 . . . . . . . 
+        . . . . . . 1 1 1 1 . . . . . . 
+        . . . . . 1 1 1 1 1 1 . . . . . 
+        . . . . . 1 1 1 1 1 1 . . . . . 
+        . . . . . 1 1 1 1 1 1 . . . . . 
+        . . . . . 1 1 . . 1 1 . . . . . 
+        . . . . . 1 . . . . 1 . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, SpriteKind.Enemy)
+    SEnemy.setPosition(randint(5, 155), 130)
+    SEnemy.setVelocity(0, -200)
+    pause(1000)
+})
+forever(function () {
+    pause(5000)
+    P1.sayText("Watch out!", 1000, false)
+    mySprite = sprites.create(img`
+        . . . . . 1 5 4 4 5 1 . . . . . 
+        . . . . . 1 5 4 4 5 1 . . . . . 
+        . . . . . 1 5 4 4 5 1 . . . . . 
+        . . . . . 1 5 4 4 5 1 . . . . . 
+        . . . . . 1 5 4 4 5 1 . . . . . 
+        . . . . . 1 5 4 4 5 1 . . . . . 
+        . . . . . 1 5 4 4 5 1 . . . . . 
+        . . . . . 1 5 4 4 5 1 . . . . . 
+        . . . . . 1 5 4 4 5 1 . . . . . 
+        . . . . . 1 5 4 4 5 1 . . . . . 
+        . . . . . 1 5 4 4 5 1 . . . . . 
+        . . . . . 1 5 4 4 5 1 . . . . . 
+        . . . . . 1 5 4 4 5 1 . . . . . 
+        . . . . . 1 5 4 4 5 1 . . . . . 
+        . . . . . 1 5 4 4 5 1 . . . . . 
+        . . . . . 1 5 4 4 5 1 . . . . . 
+        `, SpriteKind.Enemy)
+    mySprite.setPosition(randint(10, 80), -100)
+    mySprite.setVelocity(0, 250)
+    mySprite.setScale(4, ScaleAnchor.Middle)
+})
+forever(function () {
+    SEnemy = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . 1 . . . . 1 . . . . . 
+        . . . . . 1 1 . . 1 1 . . . . . 
+        . . . . . 1 1 1 1 1 1 . . . . . 
+        . . . . . 1 1 1 1 1 1 . . . . . 
+        . . . . . 1 1 1 1 1 1 . . . . . 
+        . . . . . . 1 1 1 1 . . . . . . 
+        . . . . . . . 1 1 . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, SpriteKind.Enemy)
+    SEnemy.setPosition(randint(5, 155), -10)
+    SEnemy.setVelocity(0, 200)
+    pause(1000)
+})
 forever(function () {
     Comon_enemy = sprites.create(img`
         . . . . . . . . . . . . . . . . 
