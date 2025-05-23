@@ -96,7 +96,7 @@ mySprite4 = sprites.create(img`
     `, SpriteKind.Player)
 mySprite4.setPosition(80, 30)
 mySprite4.setScale(2, ScaleAnchor.Middle)
-game.showLongText("Wellcome to space war! Press A(Z or Enter) to start!", DialogLayout.Bottom)
+game.showLongText("Wellcome to space war! Press A(Z or Space) to start!", DialogLayout.Bottom)
 sprites.destroy(mySprite4)
 P1 = sprites.create(img`
     . . . . . . . . . . . . . . . . 
@@ -120,7 +120,7 @@ P1.setStayInScreen(true)
 P1.setPosition(25, 60)
 music.play(music.melodyPlayable(music.beamUp), music.PlaybackMode.UntilDone)
 game.showLongText("You are this little red ship, move it with the arrow keys or WASD", DialogLayout.Bottom)
-game.showLongText("Press B(Space or X) to run", DialogLayout.Bottom)
+game.showLongText("Press B(Enter or X) to run and A(Space or Z) to shoot", DialogLayout.Bottom)
 game.showLongText("Your goal is to reach 200 points", DialogLayout.Bottom)
 game.showLongText("You earn points every second, or by collecting the red target (5 points)", DialogLayout.Bottom)
 game.showLongText("Avoid touching enemies (purple and white elements), they cause damage!", DialogLayout.Bottom)
